@@ -9,6 +9,12 @@
   width: 500px;
   margin: 40px auto 0px auto; }
 
+@media (max-width: 600px) {
+  .l-demo-container  {
+    width: 100%;
+  }
+}
+
 .l-popout {
   margin: 0;
   padding: 0;
@@ -33,6 +39,8 @@
   font-size: 18px;
   line-height: 22px;
   color: #666; }
+
+
   .example-chat header {
     background-color: #EEE;
     background: -webkit-gradient(linear, left top, left bottom, from(#EEEEEE), to(#DDDDDD));
@@ -194,4 +202,3 @@
   color: #999;
   float: right;
 }
-  
