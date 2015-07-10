@@ -1,0 +1,63 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <script src="components/angular/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/1.0.0/angularfire.min.js"></script>
+    <script src="components/moment/moment.js"></script>
+    <script src="components/angular-moment/angular-moment.js"></script>
+    <link rel="stylesheet" href="/styles.css"/>
+  </head>
+
+  <body ng-controller="MyController">
+
+    <!-- CHAT MARKUP -->
+    <div class="example-chat l-demo-container">
+      <header>Firebase Chat Demo 2</header>
+
+      <div class="example-chat-toolbar">
+        <label for="nameInput">Username:</label>
+        <input ng-model="name" type="text" id="nameInput" placeholder="enter a username...">
+      </div>
+
+      <ul id="example-messages" class="example-chat-messages">
+        <li ng-repeat="msg in messages">
+          <span class="example-chat-username">{{ msg.from }} - </span>{{ msg.body }} <span class="timeago" am-time-ago="msg.time"></span>
+        </li>
+      </ul>
+
+      <footer>
+        <input ng-model="msg" ng-keydown="addMessage($event)" type="text" id="messageInput"  placeholder="Type a message...">
+      </footer>
+    </div>
+
+    <script>
+      var myApp = angular.module("myApp", ["firebase", "angularMoment"]);
+
+      moment.lang('en', {
+        relativeTime : {
+          future: "in %s", past: "%s ago", s: "seconds", m: "1m", mm: "%dm", h: "1h",
+          hh: "%dh", d: "1d", dd: "%dd", M: "1m", MM: "%dm", y: "1y", yy: "%dy"
+        }
+      });
+
+      myApp.controller("MyController", ["$scope", "$firebaseArray",
+        function($scope, $firebaseArray) {
+          var ref = new Firebase("https://brilliant-fire-2881.firebaseio.com/");
+          $scope.messages = $firebaseArray(ref);
+          $scope.addMessage = function(e) {
+            if (e.keyCode === 13 && $scope.msg) {
+              var name = $scope.name || "anonymous";
+              $scope.messages.$add({
+                from: name,
+                body: $scope.msg,
+                time: Firebase.ServerValue.TIMESTAMP
+              });
+              $scope.msg = "";
+            }
+          }
+        }
+      ]);
+    </script>
+  </body>
+</html>
