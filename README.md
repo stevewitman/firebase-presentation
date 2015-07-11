@@ -1,22 +1,40 @@
 # Firebase
 #### Realtime Application Platform
-- API to store and sync data in realtime
-- Simple Login service to authenticate users
-- Flexible security system for your data
-- Bought by Google (October 2014)
+- Realtime Database
+- User Authentication
+- Static Hosting
+- Google
 
-#### Realtime data
-- Data stored as JSON
-- Data synchronized nearly instantly (3-way data binding)
-- Firebase handles internet disruptions
+#### Users
+- CBS
+- Roll20
+- Citrix - Talkboard
+- Nitrous.IO, Kobra.IO and CoderPad
+
+#### Store and Sync Realtime data
+- Data stored as JSON in NoSql cloud database
+- Synced to all connected clients in realtime
+- Web, Android, iOS
+- Stays responsive when app goes offline
 
 #### Authentication
 - Simple login (email & password)
 - Github, Google, Facebook, Twitter
 - Anonymous login
+- Integrate existing login system
 - No backend code, just configure Firebase
-
 
 #### Security
 - Write declarative security rules
+- Blaze Compiler
 - SSL
+
+#### Hosting
+- Host static assets
+- Custom domains
+- SSL certification
+- Global CDN
+
+#### Other
+- Vulcan
+- Presence system
